@@ -14,7 +14,7 @@ const config = {
         measurementId: "G-7JDTK2ZPT0"
 };
 
-export const createUserProfileDocument = async (userAuth, additonalData) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
     if(!userAuth) return;
 
     const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -30,7 +30,7 @@ export const createUserProfileDocument = async (userAuth, additonalData) => {
                 displayName,
                 email,
                 createdAt,
-                ...additonalData
+                ...additionalData
             })
         }catch(error){
             console.log('error creating user', error.message);
