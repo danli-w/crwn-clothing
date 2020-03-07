@@ -8,7 +8,7 @@ import CheckoutPage from './pages/checkout/checkout.component';
 
 import Header from './components/header/header.component';
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 import{connect} from 'react-redux';
@@ -18,12 +18,10 @@ import { createStructuredSelector } from 'reselect';
 
 
 class App extends React.Component {
-
-
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth);
@@ -36,9 +34,10 @@ class App extends React.Component {
               }
             );
           });
-        } else {
-        setCurrentUser(userAuth);
-        }
+        } 
+
+
+        setCurrentUser(userAuth);        
       });
   }
 
